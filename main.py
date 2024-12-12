@@ -27,11 +27,11 @@ from contextlib import asynccontextmanager
 app = FastAPI()
 
 # ข้อมูล token และ channel secret สำหรับ LINE
-ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN", "O0Vi8xE7Wh3A6BahSUC6O0VKR7RxR0p27jHBl1h39OdH9/d3cEtmrS4QT91BUEDmmrRqLrUiKLVxlJcggXWQ/MwNBJttPBjKEw8Oifg9O06on+Ab3UzbvQ7E8W56z5GeOIHvROzUsRVagavLPiTIbwdB04t89/1O/w1cDnyilFU=")
-CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", "701c99f9fa1b4d0261e6f4dedcce76c8")
+ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN", "A8j4Ui4VyxTxxYPq5ipLL40Yk9dOKDHp5MhDlmi+5xde79zhWm7jJHtGOUrOIaYI13Q7TvP2hjfny4ZiSiDtUAiZ7Hso9faOQDeE/ZVYjmAN9H61XtZF1qguHAP4tkenSO+NiZqzhJEI86l/OA6XmQdB04t89/1O/w1cDnyilFU=")
+CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", "0f1e3b0e6ff3ece1d503fc735cf81a86")
 
 # ข้อมูล Gemini api key
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyBrn9N8g0RnZrYhW-vFe3Tb2ytibKcsU3E")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyCjNfYCEK5z-jrZmo07TvSeBanBEnt7p08")
 
 # การเชื่อมต่อ และตั้งค่าข้อมูลเพื่อเรียกใช้งาน LINE Messaging API
 configuration = Configuration(access_token=ACCESS_TOKEN)
@@ -240,10 +240,11 @@ gemini = GeminiRAGSystem(
 async def lifespan(app: FastAPI):
     # ข้อมูลตัวอย่างที่ใช้สำหรับ Gemini
     sample_documents = [
-        "จิรภัทร ทำดี คือ ชายหนุ่มที่มีความสามารถในการเขียนโปรแกรมที่มาจากบริษัท ClickNext ที่เป็นบริษัทด้านการพัฒนาโปรแกรมที่มีชื่อเสียง",
-        "จิรภัทร ทำดี มีชื่อเล่นว่า ปาล์ม เกิดวันที่ 25 มกราคม 2555 ที่จังหวัดสระบุรี ศึกษาจบจากมหาวิทยาลัยบูรพา สาขาวิศวกรรมคอมพิวเตอร์",
+        "กิตติพงษ์ แก้วจริง คือ ชายหนุ่มที่มีความสามารถในการเขียนโปรแกรมที่มาจากคณะวิทยาการสารสนเทศ สาขา AAI มหาวิทยาลัยบูรพา",
+        "กิตติพงษ์ แก้วจริง มีชื่อเล่นว่า ต๊ะ เกิดวันที่ 30 มิถุนายน 2546 ที่จังหวัดชลบุรี ศึกษาจบจากมหาวิทยาลัยบูรพา สาขาAAI",
         "งาน BUU-Bootcamp-2024 จัดที่มหาวิทยาลัยบูรพา ในวันที่ 25 มกราคม ปีค.ศ.2024 โดยมีการจัดกิจกรรมต่าง ๆ ที่เกี่ยวข้องกับการพัฒนาซอฟต์แวร์ เวลา 9:00 น. - 16:00 น.",
-        "มหาวิทยาลัยบูรพา สาขาวิชาAI ปีการศึกษา 2565 มีนักศึกษาจำนวน 100 คน มีอาจารย์ที่ปรึกษา 10 คน"
+        "มหาวิทยาลัยบูรพา สาขาวิชาAI ปีการศึกษา 2565 มีนักศึกษาจำนวน 100 คน มีอาจารย์ที่ปรึกษา 10 คน",
+        "ClickNext team AI มี พี่เจ๋ง ทำหน้าที่เป็น Dev, พี่ดาว ทำหน้าที่เป็น BA, พี่ออย ทำหน้าที่เป็น BA, พี่ปาล์ม ทำหน้าที่เป็น backend และ พี่ชวน ทำหน้าที่เป็น Dataops"
     ]
     
     # เพิ่มข้อมูลตัวอย่างลงใน Gemini
